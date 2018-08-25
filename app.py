@@ -10,14 +10,20 @@ def hello_world():
 
 @app.route('/companies')
 def companies():
-    companiesList = ci.get_company_all()
-    return render_template('companies.html', companies = companiesList)
+    companies_list = ci.get_company_all()
+    return render_template('companies.html', companies = companies_list)
 
 
 @app.route('/companies/<name>')
 def companiesByName(name):
-    companiesList = ci.get_company_name(name)
-    return render_template('companies.html', companies = companiesList)
+    companies_list = ci.get_company_name(name)
+    return render_template('companies.html', companies = companies_list)
+
+
+@app.route('/companies/industry/<name>')
+def companiesByIndustry(name):
+    companies_list = ci.get_company_industry(name)
+    return render_template('companies.html', companies = companies_list)
 
 
 if __name__ == '__main__':
